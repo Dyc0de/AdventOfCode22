@@ -1,6 +1,8 @@
 package dayTwo
 
-import future.keywords.in
+testInput := `A Y
+B X
+C Z`
 
 challengeInput := `A X
 C X
@@ -2501,73 +2503,6 @@ B X
 C Z
 A X
 B X
-C X
-`
-
-rock := {"A", "X"}
-
-isRock(me) {
-	me in rock
-}
-
-paper := {"B", "Y"}
-
-isPaper(me) {
-	me in paper
-}
-
-scissors := {"C", "Z"}
-
-isScissors(me) {
-	me in scissors
-}
-
-isWin(opponent, me) {
-	opponent in rock
-	me in paper
-}
-
-isWin(opponent, me) {
-	opponent in paper
-	me in scissors
-}
-
-isWin(opponent, me) {
-	opponent in scissors
-	me in rock
-}
-
-isDraw(opponent, me) {
-	opponent in rock
-	me in rock
-}
-
-isDraw(opponent, me) {
-	opponent in scissors
-	me in scissors
-}
-
-isDraw(opponent, me) {
-	opponent in paper
-	me in paper
-}
-
-evaluateRoundPart1(opponent, me) := 6 {
-	isWin(opponent, me)
-} else := 3 {
-	isDraw(opponent, me)
-} else := 0
-
-pointFor(me) := 1 {
-	isRock(me)
-} else := 2 {
-	isPaper(me)
-} else := 3 {
-	isScissors(me)
-}
+C X`
 
 rounds := [round | round := split(split(challengeInput, "\n")[_], " ")]
-
-round_res := [r | r := evaluateRoundPart1(rounds[i][0], rounds[i][1]) + pointFor(rounds[i][1])]
-
-res := sum(round_res)
